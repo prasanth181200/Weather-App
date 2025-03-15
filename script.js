@@ -27,7 +27,8 @@ async function updateWeather(city){
         document.querySelector('.weather').style.display = "none";
     }
     else{
-        document.querySelector('.city').innerHTML="City "+data.name+" from"+data.sys.country;
+        document.querySelector('.city').innerHTML="City: "+data.name+" / "+data.sys.country;
+        document.querySelector('.disc').innerHTML=data.weather[0].description;
         document.querySelector('.temp').innerHTML= Math.round(data.main.temp) +"°F";
         document.querySelector('.humidity').innerHTML=data.main.humidity +"%";
         document.querySelector('.wind').innerHTML=data.wind.speed+" Km/h";

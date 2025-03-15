@@ -1,4 +1,5 @@
-const apiKey="1a3559c1b2d32c4b0505a90a2ede8291"
+//const apiKey="1a3559c1b2d32c4b0505a90a2ede8291"
+const apiKey = "933c7275a9ac1d8f99ac8df29b52fc00";
 
 const apiURL="https://api.openweathermap.org/data/2.5/weather?units=imperial&q="
 const searchbox = document.querySelector('.search input');
@@ -18,7 +19,7 @@ async function updateWeather(city){
     else{
         const weather= await fetch(apiURL + city + `&appid=${apiKey}`); 
         var data= await weather.json();
-        
+        console.log(data);
     }
 
     if(data.cod === "404"){
@@ -26,7 +27,7 @@ async function updateWeather(city){
         document.querySelector('.weather').style.display = "none";
     }
     else{
-        document.querySelector('.city').innerHTML=data.name;
+        document.querySelector('.city').innerHTML="City "+data.name+" from"+data.sys.country;
         document.querySelector('.temp').innerHTML= Math.round(data.main.temp) +"°F";
         document.querySelector('.humidity').innerHTML=data.main.humidity +"%";
         document.querySelector('.wind').innerHTML=data.wind.speed+" Km/h";
